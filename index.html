@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: grid;
+            place-items:center;
+        }
+
+        .text-red {
+            color:red;
+        }
+
+        .text-green {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <p>
+            <button class="text-green">Click</button>
+            <input type="text" v-model="greeting">
+        </p>
+        <p>
+            {{ greeting }} ({{greeting.length}})
+        </p>
+    </div>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    greeting: 'What up dog'
+                };
+            },
+            mounted() {
+                setTimeout(() => {
+                    this.greeting = "Changed";
+                }, 3000);
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
