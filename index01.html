@@ -28,21 +28,24 @@
 
     <div id="app">
         <p>
-            <button :class="active ? 'text-red' : 'text-green'"  @click="toggle">Click</button>
+            <button class="text-green">Click</button>
+            <input type="text" v-model="greeting">
+        </p>
+        <p>
+            {{ greeting }} ({{greeting.length}})
         </p>
     </div>
     <script>
         Vue.createApp({
             data() {
                 return {
-                    active: false
-                }; 
+                    greeting: 'What up dog'
+                };
             },
-
-            methods: {
-                toggle(){
-                    this.active = ! this.active;
-                }
+            mounted() {
+                setTimeout(() => {
+                    this.greeting = "Changed";
+                }, 3000);
             }
         }).mount('#app')
     </script>
